@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "87354a63-374c-4a3a-9727-6abfa6a7edc6",
+		"name": "Conta Bancaria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13806225"
+	},
+	"item": [
+		{
+			"name": "Consulta por codigo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "1002",
+							"description": "ex: 1000. 1001, 1002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}/conta",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"conta"
+					]
+				},
+				"description": "## **Consulta**\n\nRetorna uma conta especifica através do id\n\n*   **Path**`/conta`\n*   **Method:**`GET`\n*   **Form Params**\n    *   `codigo=[integer]`\n*   **Success Response:**\n    *   **Code:** 200\n    *   **Content:** `{ codigo: 12, name : \"string\", saldo: \"11\". tipo: \"p\" }`\n*   **Error Response:**\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Conta nao existente, nao foi possivel realizar a operacao\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "Cria conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nomeProprietario",
+							"value": "Pedro",
+							"description": "ex: Vitor, Lucas",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "p",
+							"description": "ex: p ou c",
+							"type": "text"
+						},
+						{
+							"key": "saldo",
+							"value": "11",
+							"description": "ex: 11, 22, 30, 40",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}/conta",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"conta"
+					]
+				},
+				"description": "## **Criar**\n\nCria uma conta\n\n*   **Path**`/conta`\n*   **Method:**`POST`\n*   **Form Params**\n    *   `nomeProprietario=[string]`\n    *   `tipo=[string]`\n    *   `saldo=[integer]`\n*   **Success Response:**\n    *   **Code:** 201 CREATED\n    *   **Content:** `{ \"resposta\": \"Cadastrado efetuado com sucesso, codigo: 100X\" }`\n*   **Error Response:**\n    *   **Code:** 400 BAD REQUEST\n    *   **Content:** `{\"resposta\": \"Cadastro nao efetuado tipo de conta invalido sao validos apenas 'p' = Poupanca ou 'c' = Corrente\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "Altera dados da conta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "1000",
+							"description": "ex: 1001, 1002, 1003",
+							"type": "text"
+						},
+						{
+							"key": "nomeProprietario",
+							"value": "Marcos",
+							"description": "ex: Lucas, Vitor",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "c",
+							"description": "ex: c ou p",
+							"type": "text"
+						},
+						{
+							"key": "saldo",
+							"value": "14",
+							"description": "ex: 11, 22, 15",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}/conta",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"conta"
+					]
+				},
+				"description": "## **Atualiza**\n\nAtualiza uma conta\n\n*   **Path**`/conta`\n*   **Method:**`PUT`\n*   **Form Params**\n    *   `codigo=[integer]`\n    *   `nomeProprietario=[string]`\n    *   `tipo=[string]`\n    *   `saldo=[integer]`\n*   **Success Response:**\n    *   **Code:** 200\n    *   **Content:** `\"resposta\": \"Conta de codigo 100X atualizada com sucesso!\"`\n*   **Error Response:**\n    *   **Code:** 400 BAD REQUEST\n    *   **Content:** `{\"resposta\": \"Cadastro nao efetuado tipo de conta invalido sao validos apenas 'p' = Poupanca ou 'c' = Corrente\"}`\n*   OR\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Conta nao existente, nao foi possivel realizar a operacao\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar conta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "1003",
+							"description": "ex: 1000, 1001, 1002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost}}/conta",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"conta"
+					]
+				},
+				"description": "## **Deletar**\n\nDeletar uma conta\n\n*   **Path**`/conta`\n*   **Method:**`DELETE`\n*   **Form Params**\n    *   `codigo=[integer]`\n*   **Success Response:**\n    *   **Code:** 200\n    *   **Content:** `\"resposta\": \"Conta codigo 100X deletada com sucesso!\"`\n*   **Error Response:**\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Conta nao existente, nao foi possivel realizar a operacao\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar contas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{localhost}}/conta/listar",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"conta",
+						"listar"
+					]
+				},
+				"description": "## **Listar**\n\nListar todas as contas\n\n*   **Path**`/conta/listar`\n*   **Method:**`GET`\n*   **Success Response:**\n    *   **Code:** 200\n    *   **Content:** `\"contas\": []`\n*   **Error Response:**\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Nao ha contas cadastradas no banco de dados\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "LerSaldo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "1000",
+							"description": "ex: 1000, 1002, 1005",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost8000}}/lerSaldo",
+					"host": [
+						"{{localhost8000}}"
+					],
+					"path": [
+						"lerSaldo"
+					]
+				},
+				"description": "## **ler saldo**\n\nRetorna o saldo de uma conta especifica\n\n*   **Path**`/lerSaldo`\n*   **Method:**`GET`\n*   **Form Params**\n    *   `codigo=[integer]`\n*   **Success Response:**\n    *   **Code:** 200\n    *   **Content:** `{ \"Saldo\": [integer] }`\n*   **Error Response:**\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Conta nao existente, nao foi possivel realizar a operacao\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "Deposito",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "1004",
+							"description": "ex: 1001, 1002",
+							"type": "text"
+						},
+						{
+							"key": "valor",
+							"value": "10",
+							"description": "ex: 11, 22, 100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost8000}}/deposito",
+					"host": [
+						"{{localhost8000}}"
+					],
+					"path": [
+						"deposito"
+					]
+				},
+				"description": "## **Deposito**\n\nAdiciona um valor ao saldo de uma conta\n\n*   **Path**`/deposito`\n*   **Method:**`PUT`\n*   **Form Params**\n    *   `codigo=[integer]`\n    *   `valor=[integer]`\n*   **Success Response:**\n    *   **Code:** 202 ACCEPTED\n    *   **Content:** `\"resposta\": \"Deposito efetuado com sucesso\"`\n*   **Error Response:**\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Conta nao existente, nao foi possivel realizar a operacao\"}`"
+			},
+			"response": []
+		},
+		{
+			"name": "Retirada",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "1004",
+							"type": "text"
+						},
+						{
+							"key": "valor",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localhost8000}}/retirada",
+					"host": [
+						"{{localhost8000}}"
+					],
+					"path": [
+						"retirada"
+					]
+				},
+				"description": "## **Retirada**\n\nRetira um valor ao saldo de uma conta\n\n*   **Path**`/retirada`\n*   **Method:**`PUT`\n*   **Form Params**\n    *   `codigo=[integer]`\n    *   `valor=[integer]`\n*   **Success Response:**\n    *   **Code:** 202 ACCEPTED\n    *   **Content:** `\"resposta\": \"Retirada efetuada com sucesso\"`\nOR\n    *   **Code:** 200\n    *   **Content:** `\"resposta\": \"Não é possivel realizar retirada pois o saldo é insuficiente\"`\n*   **Error Response:**\n    *   **Code:** 404 NOT FOUND\n    *   **Content:** `{\"resposta\": \"Conta nao existente, nao foi possivel realizar a operacao\"}`"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "localhost8000",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}

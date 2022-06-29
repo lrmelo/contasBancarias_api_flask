@@ -1,0 +1,5 @@
+{
+    "ACCOUNT_NOT_FOUND": "Conta nao existente, nao foi possivel realizar a operacao",
+    "INVALID_TYPE": "Cadastro nao efetuado tipo de conta invalido sao validos apenas 'p' = Poupanca ou 'c' = Corrente",
+    "NO_ACCOUNTS": "Nao ha contas cadastradas no banco de dados"
+}
